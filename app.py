@@ -396,7 +396,9 @@ if st.button("② この条件で判定する"):
     X = pd.DataFrame([[values[f] for f in feature_names]], columns=feature_names)
 
     if imputer is not None:
-        X = pd.DataFrame(imputer.transform(X), columns=feature_names)
+#       X = pd.DataFrame(imputer.transform(X), columns=feature_names)
+        X = pd.DataFrame(imputer.transform(X), columns=imputer.feature_names_in_)
+
     else:
         X = X.fillna(0)
 
